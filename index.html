@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menu</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+
+      background: linear-gradient(-45deg, #3a7bd5, #7b2ff7, #00d2ff, #4facfe);
+      background-size: 400% 400%;
+      animation: gradientShift 10s ease infinite;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* container for 3 squares */
+    .menu {
+      display: flex;
+      gap: 80px;
+    }
+
+    .menu-item {
+      width: 350px;
+      height: 350px;
+      border-radius: 25px;
+      background: green;
+      overflow: hidden;
+      display: block;
+      text-decoration: none;
+    }
+
+    .menu-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="menu">
+
+    <!-- LEFT (CLICKABLE MINECRAFT BUTTON) -->
+    <a href="minecraft.html" class="menu-item">
+      <img src="minecraft-landscape-poster-h1qxeiq0379px8nr.jpg" />
+    </a>
+
+    <!-- MIDDLE -->
+    <div class="menu-item"></div>
+
+    <!-- RIGHT -->
+    <div class="menu-item"></div>
+
+  </div>
+
+</body>
+</html>
