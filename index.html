@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Infinite Carousel</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+
+      background: linear-gradient(-45deg, #3a7bd5, #7b2ff7, #00d2ff, #4facfe);
+      background-size: 400% 400%;
+      animation: gradientShift 10s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .menu-overlay {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carousel {
+      display: flex;
+      gap: 40px;
+      padding: 40px;
+      overflow-x: auto;
+      width: 80vw;
+
+      scroll-behavior: smooth;
+
+      scrollbar-width: none; /* Firefox */
+    }
+
+    .carousel::-webkit-scrollbar {
+      display: none; /* Chrome */
+    }
+
+    .menu-item {
+      flex: 0 0 auto;
+      width: 200px;
+      height: 200px;
+      background: green;
+      border-radius: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="menu-overlay">
+    <div class="carousel" id="carousel">
+      <div class="menu-item"></div>
+      <div class="menu-item"></div>
+      <div class="menu-item"></div>
+      <div class="menu-item"></div>
+    </div>
+  </div>
+
+  <script>
+    const carousel = document.getElementById("carousel");
+
+    // duplicate items for looping
+    const items = [...carousel.children];
+    items.forEach(item => {
+      const clone = item.cloneNode(true);
+      carousel.appendChild(clone);
+    });
+
+    // infinite scroll logic
+    carousel.addEventListener("scroll", () => {
+      const half = carousel.scrollWidth / 2;
+
+      if (carousel.scrollLeft >= half) {
+        carousel.scrollLeft -= half;
+      }
+
+      if (carousel.scrollLeft <= 0) {
+        carousel.scrollLeft += half;
+      }
+    });
+  </script>
+
+</body>
+</html>
